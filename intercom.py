@@ -36,7 +36,6 @@ def receiver(port_receiv):
         # recibir datos, descomprimirlos y etc. luego reproducir
         stream.write(data)
 
-
 def transmiter(ip_transm, port_transm):
     """Emisor de datos.
 
@@ -56,6 +55,11 @@ def transmiter(ip_transm, port_transm):
         # grabar sonido comprimirlo y etc y enviarlo.
         data = stream.read(1024)
         sock_transmiter.sendto(data, (ip_transm, int(port_transm)))
+        
+        # mostrar el audio por pantalla con enteros
+        for i in range(0, 1024):
+            frames.append(data[i])
+        print(frames)
 
 if __name__ == '__main__':
     # establecemos puerto de escucha
